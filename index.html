@@ -43,6 +43,18 @@
              resize: none;
          }
 
+         .custom-button {
+             background-color: #28a745;
+             border-color: #17a2b8;
+             color: #fff; 
+         }
+         
+         .custom-button:hover {
+             background-color: #17a2b8; 
+             border-color: #28a745; 
+         }
+
+
       </style>
    </head>
    <body>
@@ -52,7 +64,7 @@
          <div class="form-group input-group">
             <textarea id="inputText" class="form-control textarea align-items-center p-4" placeholder="Dönüştürmek İstediğin Metin"></textarea>
             <div class="input-group-append">
-               <button class="btn  btn-outline-light" onclick="convertToBinary()">Dönüştür</button>
+               <button class="btn custom-button" onclick="convertToBinary()">Dönüştür</button>
             </div>
          </div>
          <div class="form-group mt-3">
