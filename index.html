@@ -111,5 +111,30 @@
         </div>
       </div>
     </div>
+     <script>
+         function convertToBinary() {
+             const inputText = document.getElementById("inputText").value;
+             const binaryResult = textToBinary(inputText);
+             const outputBinary = document.getElementById("outputBinary");
+             outputBinary.value = binaryResult;
+             
+             // Twitter paylaşma bağlantısı oluştur
+             const tweetText = encodeURIComponent(`${binaryResult}\n\nhttps://nescafe-xpress.vercel.app/`);
+             const tweetLink = `http://twitter.com/intent/tweet?text=${tweetText}`;
+             document.getElementById("tweetButton").href = tweetLink;
+         }
+         
+         function textToBinary(text) {
+             let binary = '';
+             for (let i = 0; i < text.length; i++) {
+                 const charCode = text.charCodeAt(i).toString(2);
+                 binary += '0'.repeat(8 - charCode.length) + charCode + ' ';
+             }
+             return binary.trim();
+         }
+      </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
