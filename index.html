@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Nescafe XPress</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+      <link rel="icon" type="image/x-icon" href="https://pbs.twimg.com/profile_images/1643924319293120515/bRSMOx8f_400x400.jpg">
+      <style>
+         * {
+         scrollbar-width: none;
+         scrollbar-color: #464a53 #2a303c;
+         }
+         *::-webkit-scrollbar {
+         width: 10px;
+         }
+         *::-webkit-scrollbar-track {
+         background: #2a303c;
+         }
+         *::-webkit-scrollbar-thumb {
+         background-color: #464a53;
+         border-radius: 0px;
+         border: 0px none #ffffff;
+         }
+         body {
+         background-color: #87CEEB; /* Sky Blue */
+         }
+         a {
+         color: red;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container mt-5 text-center col-8">
+         <img src="https://pbs.twimg.com/profile_images/1643924319293120515/bRSMOx8f_400x400.jpg" alt="Nescafe XPress" class="rounded-circle img-fluid mb-5" style="width: 200px; height: 200px;">
+         <h1>Metinden Binary'ye Dönüştürün!</h1>
+         <div class="form-group input-group">
+            <input type="text" id="inputText" placeholder="Text to Convert" class="form-control p-4">
+            <div class="input-group-append">
+               <button class="btn btn-primary" onclick="convertToBinary()">Dönüştür</button>
+            </div>
+         </div>
+         <div class="form-group mt-3">
+            <input type="text" class="form-control p-5" id="outputBinary" readonly="">
+         </div>
+         <div class="mt-3">
+            <a id="tweetButton" href="#" class="btn btn-primary">
+            <i class="fab fa-twitter"></i> Tweetle
+            </a>
+         </div>
+      </div>
+      <footer class="py-3 my-4">
+         <p class="text-center text-muted">Developed by: <a href="https://github.com/npcHamza" target="_blank">npcHamza</a></p>
+      </footer>
+      <script>
+         function convertToBinary() {
+             const inputText = document.getElementById("inputText").value;
+             const binaryResult = textToBinary(inputText);
+             const outputBinary = document.getElementById("outputBinary");
+             outputBinary.value = binaryResult;
+             
+             // Twitter paylaşma bağlantısı oluştur
+             const tweetText = encodeURIComponent(`${binaryResult}\n\nhttps://nescafe-xpress.vercel.app/`);
+             const tweetLink = `http://twitter.com/intent/tweet?text=${tweetText}`;
+             document.getElementById("tweetButton").href = tweetLink;
+         }
+         
+         function textToBinary(text) {
+             let binary = '';
+             for (let i = 0; i < text.length; i++) {
+                 const charCode = text.charCodeAt(i).toString(2);
+                 binary += '0'.repeat(8 - charCode.length) + charCode + ' ';
+             }
+             return binary.trim();
+         }
+      </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </body>
+</html>
